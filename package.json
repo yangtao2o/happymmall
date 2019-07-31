@@ -1,0 +1,21 @@
+{
+  "name": "happymmall",
+  "version": "1.0.0",
+  "description": "基于React + React-Router的企业级后台管理系统学习记录",
+  "main": "index.js",
+  "repository": "https://github.com/yangtao2o/happymmall.git",
+  "homepage": "https://istaotao.com/happaymmall",
+  "author": "yangtao <istaotao@aliyun.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack --config webpack.config.js",
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "webpack": "^4.38.0",
+    "webpack-cli": "^3.3.6"
+  },
+  "dependencies": {
+    "loadsh": "^0.0.4"
+  }
+}
