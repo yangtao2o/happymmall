@@ -3,10 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: {
-    app: './src/index.js',
-    print: './src/print.js'
-  },
+  entry: './src/app.jsx',
   devtool: 'inline-source-map',
   devServer: {
     contentBase: './dist'
@@ -18,7 +15,7 @@ module.exports = {
     }),
   ],
   output: {
-    filename: '[name].bundle.js',
+    filename: 'app.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
   },
@@ -45,12 +42,12 @@ module.exports = {
         ]
       },
       {
-        test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
+        test: /\.jsx$/,
+        exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']
+            presets: ['@babel/preset-react']
           }
         }
       }
