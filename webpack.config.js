@@ -22,6 +22,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
   },
+  mode: "production",
   module: {
     rules: [
       {
@@ -42,6 +43,16 @@ module.exports = {
         use: [
           'file-loader'
         ]
+      },
+      {
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
       }
     ]
   }
