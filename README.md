@@ -1,6 +1,11 @@
 # react-happymmall
 基于React + React-Router的企业级后台管理系统学习记录
 
+## Webpack
+
+* [webpack 指南](https://webpack.docschina.org/guides/)
+* [React与webpack](https://typescript.bootcss.com/tutorials/react-&-webpack.html)
+
 ## 安装 webpack 遇到的坑
 
 #### `CleanWebpackPlugin is not a constructor`
