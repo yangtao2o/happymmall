@@ -20,6 +20,7 @@
     "webpack-cli": "^3.3.6"
   },
   "dependencies": {
+    "font-awesome": "^4.7.0",
     "loadsh": "^0.0.4"
   }
 }

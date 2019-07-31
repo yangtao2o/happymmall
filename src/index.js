@@ -1,5 +1,4 @@
 import _ from 'loadsh';
-
 import './index.css';
 import Logo from './logo.png';
 
