@@ -291,19 +291,23 @@ module: {
   ]
 }
 ```
-然后跑一下，dist下就会出现我们设置的 `styles.css` 文件，并且会自动添加至 `index.html`:
+
+然后跑一下，dist 下就会出现我们设置的 `styles.css` 文件，并且会自动添加至 `index.html`:
+
 ```html
-<link href="style.css" rel="stylesheet">
+<link href="style.css" rel="stylesheet" />
 ```
 
 #### 解析 scss
 
 安装: sass-loader node-sass
+
 ```bash
 yarn add sass-loader@6.0.6 node-sass@4.7.2 --dev
 ```
 
 设置：
+
 ```javascript
 {
   test: /\.scss$/,
@@ -315,6 +319,7 @@ yarn add sass-loader@6.0.6 node-sass@4.7.2 --dev
 ```
 
 这时候，我们去 src 下新建一个 `app.scss`:
+
 ```css
 body {
   h1 {
@@ -324,18 +329,22 @@ body {
 ```
 
 并且在 `index.jsx` 中引入：
+
 ```javascript
-import './style.css';
-import './app.scss';
+import "./style.css";
+import "./app.scss";
 ```
 
-接着，跑一下看看，刷~的一声，打开dist下的 `styles.css`，看看是不是我们引入的内容：
+接着，跑一下看看，刷~的一声，打开 dist 下的 `styles.css`，看看是不是我们引入的内容：
+
 ```css
 body {
   color: red;
-  font-size: 16px; }
+  font-size: 16px;
+}
 body h1 {
-  color: blue; }
+  color: blue;
+}
 ```
 
 测试通过，完美！
@@ -343,11 +352,13 @@ body h1 {
 #### 处理图片资源
 
 安装：[url-loader](https://webpack.js.org/loaders/url-loader/#root)
+
 ```bash
 yarn add file-loader@1.1.6 url-loader@0.6.2 --dev
 ```
 
 设置：
+
 ```javascript
 {
   test: /\.(png|jpg|gif)$/,
@@ -363,16 +374,52 @@ yarn add file-loader@1.1.6 url-loader@0.6.2 --dev
 ```
 
 同样的 src 下找张图片，测试下是否通过，在 `index.jsx` 里添加：
+
 ```javascript
-import ImgSrc from './react.png';
+import ImgSrc from "./react.png";
 
 ReactDOM.render(
   <div>
     <h1>Hello, React.</h1>
-    <img src={ImgSrc} alt="react"/>
+    <img src={ImgSrc} alt="react" />
   </div>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 ```
 
-然后跑一下，如果图片大于 limit 的设置就会出现在 dist 目录下，否则会以 base64 格式引入使用。
+然后跑一下，发现：如果图片大于 limit 的设置（8kb=8192/1024kb）就会出现在 dist 目录下，否则会以 base64 格式直接引入使用。
+
+#### 处理图标资源
+
+先下载个[Font Awesome](http://www.fontawesome.com.cn/get-started/)试试水：
+
+```bash
+yarn add font-awesome
+```
+
+设置：
+
+```javascript
+{
+  test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
+  use: [
+    {
+      loader: 'url-loader',
+      options: {
+        limit: 8192
+      }
+    }
+  ]
+}
+```
+
+然后按照以下几个步骤来试水：
+* 复制 `font-awesome/` 目录到你的项目中
+* 只保留 fonts 文件 和 scss 文件里的内容，其他可以删除
+* 最后去你的主文件：`app.scss` 添加它：
+```scss
+$fa-font-path: "./font-awesome/fonts";
+@import "./font-awesome/scss/font-awesome.scss";
+```
+接着我们跑一下：`node_modules/.bin/webpack`，dist 下瞬间就会出现一堆文件，表示测试通过。
+
