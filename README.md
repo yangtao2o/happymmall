@@ -1,21 +1,36 @@
-# react-happymmall
-基于React + React-Router的企业级后台管理系统学习记录
+# React的Webpack配置
 
 ## Webpack
 
 * [webpack 指南](https://webpack.docschina.org/guides/)
-* [React与webpack](https://typescript.bootcss.com/tutorials/react-&-webpack.html)
+* [React的Webpack配置](https://www.jianshu.com/p/0e01ca947e50)
 
-## 安装 webpack 遇到的坑
+#### 使用版本3.10.0
 
-#### `CleanWebpackPlugin is not a constructor`
+`yarn add webpack@3.10.0 --dev`
 
-原因：版本问题，中文文档还未更新
+#### 需要处理的文件里类型
+```
+HTML -> html-webpack-plugin
+脚本 -> babel + babel-preset-react
+样式 -> css-loader + sass-loader
+图片/字体 -> url-loader + file-loader
+```
 
-修改：
-```javascript
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-plugins: [
-  new CleanWebpackPlugin()  // clean-webpack-plugin only accepts an options object
-],
+#### webpack常用模块
+
+```
+html-webpack-plugin html单独打包成文件
+extract-text-webpack-plugin 样式打包成单独文件
+CommonsChunkPlugin 提出通用模块
+```
+
+#### webpack-dev-server
+
+```
+为webpack项目提供web服务
+使用2.9.7
+更改代码自动刷新,路径转发
+yarn add webpack-dev-server@2.9.7 --dev
+解决多版本共存问题
 ```
