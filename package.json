@@ -5,6 +5,10 @@
   "repository": "https://github.com/yangtao2o/happymmall.git",
   "author": "yangtao <istaotao@aliyun.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server --open",
+    "build": "webpack"
+  },
   "devDependencies": {
     "babel-core": "6.26.0",
     "babel-loader": "7.1.2",
@@ -18,7 +22,8 @@
     "sass-loader": "6.0.6",
     "style-loader": "0.19.1",
     "url-loader": "0.6.2",
-    "webpack": "3.10.0"
+    "webpack": "3.10.0",
+    "webpack-dev-server": "2.9.7"
   },
   "dependencies": {
     "font-awesome": "^4.7.0",

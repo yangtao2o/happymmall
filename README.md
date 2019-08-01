@@ -414,12 +414,68 @@ yarn add font-awesome
 ```
 
 然后按照以下几个步骤来试水：
-* 复制 `font-awesome/` 目录到你的项目中
-* 只保留 fonts 文件 和 scss 文件里的内容，其他可以删除
-* 最后去你的主文件：`app.scss` 添加它：
+
+- 复制 `font-awesome/` 目录到你的项目中
+- 只保留 fonts 文件 和 scss 文件里的内容，其他可以删除
+- 最后去你的主文件：`app.scss` 添加它：
+
 ```scss
 $fa-font-path: "./font-awesome/fonts";
 @import "./font-awesome/scss/font-awesome.scss";
 ```
+
 接着我们跑一下：`node_modules/.bin/webpack`，dist 下瞬间就会出现一堆文件，表示测试通过。
 
+#### 公共模块
+
+[CommonsChunkPlugin](https://webpack.docschina.org/plugins/commons-chunk-plugin/#%E9%85%8D%E7%BD%AE)插件，是一个可选的用于建立一个独立文件(又称作 chunk)的功能，这个文件包括多个入口 chunk 的公共模块。
+
+先访问缓存中的公共代码，加快浏览器的访问速度。
+
+设置：
+
+```javascript
+const webpack = require("webpack");
+// ...
+new webpack.optimize.CommonsChunkPlugin({
+  name: 'commons', // 公共 chunk 的名称
+  filename: 'js/base.js'  // 公共 chunk 的文件名
+}),
+```
+
+#### 使用 webpack-dev-server
+
+`webpack-dev-server` 为你提供了一个简单的 `web server`，并且具有 `live reloading`(实时重新加载) 功能。
+
+安装：
+
+```bash
+yarn add webpack-dev-server@2.9.7 --dev
+```
+
+修改配置文件，告诉 `dev server`，从什么位置查找文件：
+
+```javascript
+devServer: {
+  contentBase: './dist',
+  port: 8082
+}
+```
+
+接着去 `package.json`里添加一个可以直接运行 `dev server` 的 script：
+
+```json
+"scripts": {
+  "start": "webpack-dev-server --open",
+  "build": "webpack"
+},
+```
+
+这样就不用每次都去访问 `node_modules/.bin/webpack` 了，直接启动：
+
+```bash
+# 启动 dev server
+npm start
+# 打包构建
+npm run build
+```

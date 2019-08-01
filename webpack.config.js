@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextWebpackPlugin = require("extract-text-webpack-plugin");
 
@@ -8,11 +9,19 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "app.js"
   },
+  devServer: {
+    contentBase: './dist',
+    port: 8082
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html"
     }),
     new ExtractTextWebpackPlugin("styles.css"),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "commons",
+      filename: "js/base.js"
+    })
   ],
   module: {
     rules: [
@@ -37,7 +46,7 @@ module.exports = {
         test: /\.(png|jpg|gif)$/,
         use: [
           {
-            loader: 'url-loader',
+            loader: "url-loader",
             options: {
               limit: 8192
             }
@@ -48,13 +57,13 @@ module.exports = {
         test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
         use: [
           {
-            loader: 'url-loader',
+            loader: "url-loader",
             options: {
               limit: 8192
             }
           }
         ]
-      },
+      }
     ]
   }
 };
