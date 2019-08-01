@@ -232,5 +232,32 @@ module: {
     }
   ];
 }
+
+// 这时候的入口文件也需要更改下测试
+entry: './src/index.jsx',
 ```
 
+然后修改 `src/index.js` 为 `src/index.jsx`:
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+ReactDOM.render(
+  <h1>Hello, React.</h1>,
+  document.getElementById('root')
+);
+```
+
+运行：`node_modules/.bin/webpack`，然后再去`dist/app.js`，查找如下：
+```javascript
+// ...
+_reactDom2.default.render(_react2.default.createElement(
+  'h1',
+  null,
+  'Hello, React.'
+), document.getElementById('root'));
+
+// ...
+```
+
+那么，表示解析 .jsx 成功。
