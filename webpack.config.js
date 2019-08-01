@@ -12,6 +12,7 @@ module.exports = {
   },
   devServer: {
     contentBase: './dist',
+    hot: true,
     port: 8082
   },
   plugins: [
@@ -23,7 +24,8 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       name: "commons",
       filename: "js/base.js"
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ],
   module: {
     rules: [

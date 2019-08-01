@@ -487,13 +487,116 @@ npm run build
 方法：在每次构建前清理 `/dist` 文件夹，这样只会生成用到的文件。
 
 使用 `clean-webpack-plugin` 插件来进行清理:
+
 ```bash
 yarn add clean-webpack-plugin --dev
 ```
 
 设置：
-```javascript
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-new CleanWebpackPlugin()
+```javascript
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+
+new CleanWebpackPlugin();
+```
+
+#### 模块热替换 HMR
+
+需求：在开发环境下，可不可以每次保存之后，不用刷新浏览器，就自动更新了呢？
+
+方法：[模块热替换](https://webpack.docschina.org/guides/hot-module-replacement/)(`hot module replacement` 或 `HMR`)，只更新改动的文件。
+
+设置：
+
+```javascript
+const webpack = require("webpack");
+
+plugins: [
+  new webpack.HotModuleReplacementPlugin()
+],
+devServer: {
+  contentBase: './dist',
+  hot: true,  // 开启
+  port: 8082
+}
+```
+
+这样，重启服务，然后修改 `index.jsx` 文件，就会发现自动更新了，妈妈再也不用担心我的 F5 了...
+
+#### webpack.config.js
+
+```javascript
+const path = require("path");
+const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ExtractTextWebpackPlugin = require("extract-text-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+
+module.exports = {
+  entry: "./src/index.jsx",
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "app.js"
+  },
+  devServer: {
+    contentBase: "./dist",
+    hot: true,
+    port: 8082
+  },
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: "./src/index.html"
+    }),
+    new ExtractTextWebpackPlugin("styles.css"),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "commons",
+      filename: "js/base.js"
+    }),
+    new webpack.HotModuleReplacementPlugin()
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["env", "react"]
+          }
+        }
+      },
+      {
+        test: /\.(sc|c)ss$/,
+        use: ExtractTextWebpackPlugin.extract({
+          fallback: "style-loader",
+          use: ["css-loader", "sass-loader"]
+        })
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 8192
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 8192
+            }
+          }
+        ]
+      }
+    ]
+  }
+};
 ```
