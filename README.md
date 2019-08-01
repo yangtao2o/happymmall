@@ -261,3 +261,43 @@ _reactDom2.default.render(_react2.default.createElement(
 ```
 
 那么，表示解析 .jsx 成功。
+
+#### 解析 CSS
+
+安装：
+```bash
+yarn add style-loader@0.19.1 css-loader@0.28.8 --dev
+```
+
+设置：
+```javascript
+{
+  test: /\.css$/,
+  use: ['style-loader', 'css-loader']
+}
+```
+
+在 index.jsx 里添加：`import './style.css';`，在`style.css`添加一些：
+```css
+body {
+  color: red;
+  font-size: 16px;
+}
+```
+
+接着跑一下：`node_modules/.bin/webpack`，再接着去dist下的app.js找找：
+```javascript
+// module
+exports.push([module.i, "body {\n  color: red;\n  font-size: 16px;\n}", ""]);
+```
+
+嗯，已经被解析为 js...但是，我们有时候需要大量的css文件，并需要js解析，那就需要个插件单独处理：`ExtractTextWebpackPlugin`:
+
+```bash
+yarn add extract-text-webpack-plugin@3.0.2 --dev
+```
+
+设置：
+```javascript
+
+```
