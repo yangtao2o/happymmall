@@ -238,24 +238,22 @@ entry: './src/index.jsx',
 ```
 
 然后修改 `src/index.js` 为 `src/index.jsx`:
-```javascript
-import React from 'react';
-import ReactDOM from 'react-dom';
 
-ReactDOM.render(
-  <h1>Hello, React.</h1>,
-  document.getElementById('root')
-);
+```javascript
+import React from "react";
+import ReactDOM from "react-dom";
+
+ReactDOM.render(<h1>Hello, React.</h1>, document.getElementById("root"));
 ```
 
 运行：`node_modules/.bin/webpack`，然后再去`dist/app.js`，查找如下：
+
 ```javascript
 // ...
-_reactDom2.default.render(_react2.default.createElement(
-  'h1',
-  null,
-  'Hello, React.'
-), document.getElementById('root'));
+_reactDom2.default.render(
+  _react2.default.createElement("h1", null, "Hello, React."),
+  document.getElementById("root")
+);
 
 // ...
 ```
@@ -265,11 +263,13 @@ _reactDom2.default.render(_react2.default.createElement(
 #### 解析 CSS
 
 安装：
+
 ```bash
 yarn add style-loader@0.19.1 css-loader@0.28.8 --dev
 ```
 
 设置：
+
 ```javascript
 {
   test: /\.css$/,
@@ -278,6 +278,7 @@ yarn add style-loader@0.19.1 css-loader@0.28.8 --dev
 ```
 
 在 index.jsx 里添加：`import './style.css';`，在`style.css`添加一些：
+
 ```css
 body {
   color: red;
@@ -285,19 +286,85 @@ body {
 }
 ```
 
-接着跑一下：`node_modules/.bin/webpack`，再接着去dist下的app.js找找：
+接着跑一下：`node_modules/.bin/webpack`，再接着去 dist 下的 app.js 找找：
+
 ```javascript
 // module
 exports.push([module.i, "body {\n  color: red;\n  font-size: 16px;\n}", ""]);
 ```
 
-嗯，已经被解析为 js...但是，我们有时候需要大量的css文件，并需要js解析，那就需要个插件单独处理：`ExtractTextWebpackPlugin`:
+嗯，已经被解析并添加到 app.js 文件中。但是，我们有时候需要大量的 css 文件，并需要 js 解析，那就需要个插件单独处理：[ExtractTextWebpackPlugin](https://webpack.js.org/plugins/extract-text-webpack-plugin/#root):
 
 ```bash
 yarn add extract-text-webpack-plugin@3.0.2 --dev
 ```
 
 设置：
-```javascript
 
+```javascript
+plugins: [
+  new HtmlWebpackPlugin({
+    template: "./src/index.html"
+  }),
+  // Add
+  new ExtractTextWebpackPlugin("styles.css"),
+],
+module: {
+  rules: [
+    // Add
+    {
+      test: /\.css$/,
+      use: ExtractTextWebpackPlugin.extract({
+        fallback: "style-loader",
+        use: "css-loader"
+      })
+    }
+  ]
+}
+```
+然后跑一下，dist下就会出现我们设置的 `styles.css` 文件，并且会自动添加至 `index.html`:
+```html
+<link href="style.css" rel="stylesheet">
+```
+
+#### 解析 scss
+
+安装: sass-loader node-sass
+```bash
+yarn add sass-loader@6.0.6 node-sass@4.7.2 --dev
+```
+
+设置：
+```javascript
+{
+  test: /\.scss$/,
+  use: ExtractTextWebpackPlugin.extract({
+    fallback: "style-loader",
+    use: ["css-loader", "sass-loader"]
+  })
+}
+```
+
+这时候，我们去 src 下新建一个 `app.scss`:
+```css
+body {
+  h1 {
+    color: blue;
+  }
+}
+```
+
+并且在 `index.jsx` 中引入：
+```javascript
+import './style.css';
+import './app.scss';
+```
+
+接着，跑一下看看，刷~的一声，打开dist下的 `styles.css`，看看是不是我们引入的内容：
+```css
+body {
+  color: red;
+  font-size: 16px; }
+body h1 {
+  color: blue; }
 ```
