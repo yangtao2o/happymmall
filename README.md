@@ -1,40 +1,9 @@
-# React 的 Webpack 配置
+# React 的 Webpack@3 配置
 
 ## Webpack
 
 - [webpack 指南](https://webpack.docschina.org/guides/)
 - [React 的 Webpack 配置](https://www.jianshu.com/p/0e01ca947e50)
-
-#### 使用版本 3.10.0
-
-`yarn add webpack@3.10.0 --dev`
-
-#### 需要处理的文件里类型
-
-```
-HTML -> html-webpack-plugin
-脚本 -> babel + babel-preset-react
-样式 -> css-loader + sass-loader
-图片/字体 -> url-loader + file-loader
-```
-
-#### webpack 常用模块
-
-```
-html-webpack-plugin html单独打包成文件
-extract-text-webpack-plugin 样式打包成单独文件
-CommonsChunkPlugin 提出通用模块
-```
-
-#### webpack-dev-server
-
-```
-为webpack项目提供web服务
-使用2.9.7
-更改代码自动刷新,路径转发
-yarn add webpack-dev-server@2.9.7 --dev
-解决多版本共存问题
-```
 
 ## 安装
 
@@ -368,3 +337,42 @@ body {
 body h1 {
   color: blue; }
 ```
+
+测试通过，完美！
+
+#### 处理图片资源
+
+安装：[url-loader](https://webpack.js.org/loaders/url-loader/#root)
+```bash
+yarn add file-loader@1.1.6 url-loader@0.6.2 --dev
+```
+
+设置：
+```javascript
+{
+  test: /\.(png|jpg|gif)$/,
+  use: [
+    {
+      loader: 'url-loader',
+      options: {
+        limit: 8192
+      }
+    }
+  ]
+}
+```
+
+同样的 src 下找张图片，测试下是否通过，在 `index.jsx` 里添加：
+```javascript
+import ImgSrc from './react.png';
+
+ReactDOM.render(
+  <div>
+    <h1>Hello, React.</h1>
+    <img src={ImgSrc} alt="react"/>
+  </div>,
+  document.getElementById('root')
+);
+```
+
+然后跑一下，如果图片大于 limit 的设置就会出现在 dist 目录下，否则会以 base64 格式引入使用。
