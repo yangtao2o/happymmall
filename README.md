@@ -104,7 +104,7 @@ module.exports = {
 
 接着跑一下：`node_modules/.bin/webpack`，不出意外的话，dist 下会出现一个 index.html，打开查看就会发现，不仅有我们自己指定的内容，还把`app.js`也自动引入了，这波操作够可以。
 
-#### 脚本处理 Babel
+#### Babel 处理脚本
 
 文档：[babel-loader](https://www.webpackjs.com/loaders/babel-loader/)
 
@@ -389,7 +389,7 @@ ReactDOM.render(
 
 然后跑一下，发现：如果图片大于 limit 的设置（8kb=8192/1024kb）就会出现在 dist 目录下，否则会以 base64 格式直接引入使用。
 
-#### 处理图标资源
+#### 处理 fonts 字体
 
 先下载个[Font Awesome](http://www.fontawesome.com.cn/get-started/)试试水：
 
@@ -478,4 +478,22 @@ devServer: {
 npm start
 # 打包构建
 npm run build
+```
+
+#### 清理 /dist 文件夹
+
+需求：每次 `build` 的时候，发现 `/dist` 下的文件一直会堆砌，能不能每次构建的时候，只生成项目中真正在使用的文件？
+
+方法：在每次构建前清理 `/dist` 文件夹，这样只会生成用到的文件。
+
+使用 `clean-webpack-plugin` 插件来进行清理:
+```bash
+yarn add clean-webpack-plugin --dev
+```
+
+设置：
+```javascript
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+new CleanWebpackPlugin()
 ```
