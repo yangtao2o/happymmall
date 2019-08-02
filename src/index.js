@@ -1,19 +1,12 @@
-import _ from 'loadsh';
-import './index.css';
-import Logo from './logo.png';
-
-function component() {
-  var element = document.createElement('div');
-
-  // Lodash, now imported by this script
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-  element.classList.add('hello');
-
-  var myLogo = new Image();
-  myLogo.src = Logo;
-  element.appendChild(myLogo);
-
-  return element;
+class People {
+  constructor(name) {
+    this.name = 'people'
+  }
 }
 
-document.body.appendChild(component());
+class Man extends People {
+  constructor(name) {
+    super(name);
+    this.age = 27;
+  }
+}
