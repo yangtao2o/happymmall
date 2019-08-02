@@ -5,7 +5,7 @@
 - [webpack 指南](https://webpack.docschina.org/guides/)
 - [React 的 Webpack 配置](https://www.jianshu.com/p/0e01ca947e50)
 
-## 安装
+## 开始安装
 
 #### 配置 Webpack
 
@@ -21,8 +21,31 @@ git version 2.17.2 (Apple Git-113)
 ➜  happymmall git:(webpack@3-react) ✗ yarn -v
 1.17.3
 ```
+##### 安装 [yarn](https://yarn.bootcss.com/docs/install/#mac-stable)
 
-安装 webpack
+```bash
+# homebrew 安装
+brew install yarn
+
+# npm/cnpm 安装
+npm install cnpm -g
+cnpm install yarn -g
+
+# 测试是否安装成功
+➜  ~ yarn --version
+1.17.3
+```
+
+常用命令：
+```bash
+yarn init  # 初始化
+yarn add [package]  # 添加依赖包
+yarn add [package] --dev   # 添加到 devDependencies
+yarn remove [package]  # 删除依赖包
+yarn install   # 安装所有依赖包
+```
+
+##### 安装 webpack@3
 
 ```bash
 yarn init
@@ -523,23 +546,74 @@ devServer: {
 
 这样，重启服务，然后修改 `index.jsx` 文件，就会发现自动更新了，妈妈再也不用担心我的 F5 了...
 
-#### webpack.config.js
+#### 启动 Server
 
+`webpack-dev-middleware` 是一个封装器(`wrapper`)，它可以把 `webpack` 处理过的文件发送到一个 `server`。
+
+安装：
+```bash
+yarn add webpack-dev-middleware@2.0.6 --dev
+yarn add express --dev 
+```
+
+根目录新建一个 `server.js`:
+```javascript
+const express = require('express');
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+
+const app = express();
+const config = require('./webpack.config.js');
+const compiler = webpack(config);
+
+// 告诉 express 使用 webpack-dev-middleware，
+// 以及将 webpack.config.js 配置文件作为基础配置
+app.use(webpackDevMiddleware(compiler, {
+  publicPath: config.output.publicPath  
+}));
+
+// 使用配置文件的端口号
+app.listen(config.devServer.port, function () {
+  console.log(`Example app listening on port ${config.devServer.port}!\n`);
+});
+```
+
+我们将会在 server 脚本使用 publicPath，以确保文件资源能够正确地 serve 在 http://localhost:8082 下：
+```javascript
+output: {
+  path: path.resolve(__dirname, "dist"),
+  filename: "app.js",
+  publicPath: '/'
+},
+```
+
+接着，添加一个 `npm script`：
+```json
+"server": "node server.js"
+```
+
+跑一下：`npm run server`，访问 `http://localhost:8082/`，完美运行。
+
+
+#### 最后的配置文件
+
+webpack.config.js:
 ```javascript
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextWebpackPlugin = require("extract-text-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: "./src/index.jsx",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "app.js"
+    filename: "app.js",
+    publicPath: '/'
   },
   devServer: {
-    contentBase: "./dist",
+    contentBase: './dist',
     hot: true,
     port: 8082
   },
@@ -599,10 +673,12 @@ module.exports = {
     ]
   }
 };
+
 ```
 
 #### 项目目录结构
-如何生成目录结构：[Mac使用tree生成目录结构](https://blog.csdn.net/qq673318522/article/details/53713903)
+
+关于tree的使用总结：[MacOS如何使用 tree 生成目录结构](https://www.jianshu.com/p/6b57f6e40d64)
 
 常用命令：
 ```bash
@@ -624,6 +700,9 @@ tree -I "node_modules"
 # 输出
 tree > tree.md
 
+# Help
+tree --help
+
 # 最后，我的输出：
 tree -I "node_modules" > tree.md
 ```
@@ -633,6 +712,7 @@ tree.md的内容为：
 ├── README.md
 ├── dist
 ├── package.json
+├── server.js
 ├── src
 │   ├── app.scss
 │   ├── font-awesome
@@ -667,6 +747,7 @@ tree.md的内容为：
 ├── webpack.config.js
 └── yarn.lock
 
-5 directories, 31 files
+5 directories, 32 files
+
 ```
 

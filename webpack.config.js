@@ -8,7 +8,8 @@ module.exports = {
   entry: "./src/index.jsx",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "app.js"
+    filename: "app.js",
+    publicPath: '/'
   },
   devServer: {
     contentBase: './dist',

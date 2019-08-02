@@ -2,6 +2,7 @@
 ├── README.md
 ├── dist
 ├── package.json
+├── server.js
 ├── src
 │   ├── app.scss
 │   ├── font-awesome
@@ -36,4 +37,4 @@
 ├── webpack.config.js
 └── yarn.lock
 
-5 directories, 31 files
+5 directories, 32 files
