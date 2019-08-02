@@ -600,3 +600,73 @@ module.exports = {
   }
 };
 ```
+
+#### 项目目录结构
+如何生成目录结构：[Mac使用tree生成目录结构](https://blog.csdn.net/qq673318522/article/details/53713903)
+
+常用命令：
+```bash
+# 下载
+brew install tree
+
+# 显示某个文件夹下的所有文件
+tree -a
+
+# 只显示文件夹
+tree -d
+
+# 显示项目的层级，如三级
+tree -L 3  
+
+# 过滤，如除node_modules文件
+tree -I "node_modules"
+
+# 输出
+tree > tree.md
+
+# 最后，我的输出：
+tree -I "node_modules" > tree.md
+```
+tree.md的内容为：
+```md
+.
+├── README.md
+├── dist
+├── package.json
+├── src
+│   ├── app.scss
+│   ├── font-awesome
+│   │   ├── fonts
+│   │   │   ├── FontAwesome.otf
+│   │   │   ├── fontawesome-webfont.eot
+│   │   │   ├── fontawesome-webfont.svg
+│   │   │   ├── fontawesome-webfont.ttf
+│   │   │   ├── fontawesome-webfont.woff
+│   │   │   └── fontawesome-webfont.woff2
+│   │   └── scss
+│   │       ├── _animated.scss
+│   │       ├── _bordered-pulled.scss
+│   │       ├── _core.scss
+│   │       ├── _fixed-width.scss
+│   │       ├── _icons.scss
+│   │       ├── _larger.scss
+│   │       ├── _list.scss
+│   │       ├── _mixins.scss
+│   │       ├── _path.scss
+│   │       ├── _rotated-flipped.scss
+│   │       ├── _screen-reader.scss
+│   │       ├── _stacked.scss
+│   │       ├── _variables.scss
+│   │       └── font-awesome.scss
+│   ├── index.html
+│   ├── index.js
+│   ├── index.jsx
+│   ├── react.png
+│   └── style.css
+├── tree.md
+├── webpack.config.js
+└── yarn.lock
+
+5 directories, 31 files
+```
+
