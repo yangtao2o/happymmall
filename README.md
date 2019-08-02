@@ -21,6 +21,7 @@ git version 2.17.2 (Apple Git-113)
 ➜  happymmall git:(webpack@3-react) ✗ yarn -v
 1.17.3
 ```
+
 ##### 安装 [yarn](https://yarn.bootcss.com/docs/install/#mac-stable)
 
 ```bash
@@ -37,6 +38,7 @@ cnpm install yarn -g
 ```
 
 常用命令：
+
 ```bash
 yarn init  # 初始化
 yarn add [package]  # 添加依赖包
@@ -551,34 +553,39 @@ devServer: {
 `webpack-dev-middleware` 是一个封装器(`wrapper`)，它可以把 `webpack` 处理过的文件发送到一个 `server`。
 
 安装：
+
 ```bash
 yarn add webpack-dev-middleware@2.0.6 --dev
-yarn add express --dev 
+yarn add express --dev
 ```
 
 根目录新建一个 `server.js`:
+
 ```javascript
-const express = require('express');
-const webpack = require('webpack');
-const webpackDevMiddleware = require('webpack-dev-middleware');
+const express = require("express");
+const webpack = require("webpack");
+const webpackDevMiddleware = require("webpack-dev-middleware");
 
 const app = express();
-const config = require('./webpack.config.js');
+const config = require("./webpack.config.js");
 const compiler = webpack(config);
 
 // 告诉 express 使用 webpack-dev-middleware，
 // 以及将 webpack.config.js 配置文件作为基础配置
-app.use(webpackDevMiddleware(compiler, {
-  publicPath: config.output.publicPath  
-}));
+app.use(
+  webpackDevMiddleware(compiler, {
+    publicPath: config.output.publicPath
+  })
+);
 
 // 使用配置文件的端口号
-app.listen(config.devServer.port, function () {
+app.listen(config.devServer.port, function() {
   console.log(`Example app listening on port ${config.devServer.port}!\n`);
 });
 ```
 
 我们将会在 server 脚本使用 publicPath，以确保文件资源能够正确地 serve 在 http://localhost:8082 下：
+
 ```javascript
 output: {
   path: path.resolve(__dirname, "dist"),
@@ -588,32 +595,33 @@ output: {
 ```
 
 接着，添加一个 `npm script`：
+
 ```json
 "server": "node server.js"
 ```
 
 跑一下：`npm run server`，访问 `http://localhost:8082/`，完美运行。
 
-
 #### 最后的配置文件
 
 webpack.config.js:
+
 ```javascript
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextWebpackPlugin = require("extract-text-webpack-plugin");
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.jsx",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "app.js",
-    publicPath: '/'
+    publicPath: "/"
   },
   devServer: {
-    contentBase: './dist',
+    contentBase: "./dist",
     hot: true,
     port: 8082
   },
@@ -673,14 +681,14 @@ module.exports = {
     ]
   }
 };
-
 ```
 
 #### 项目目录结构
 
-关于tree的使用总结：[MacOS如何使用 tree 生成目录结构](https://www.jianshu.com/p/6b57f6e40d64)
+关于 tree 的使用总结：[MacOS 如何使用 tree 生成目录结构](https://www.jianshu.com/p/6b57f6e40d64)
 
 常用命令：
+
 ```bash
 # 下载
 brew install tree
@@ -692,7 +700,7 @@ tree -a
 tree -d
 
 # 显示项目的层级，如三级
-tree -L 3  
+tree -L 3
 
 # 过滤，如除node_modules文件
 tree -I "node_modules"
@@ -706,7 +714,9 @@ tree --help
 # 最后，我的输出：
 tree -I "node_modules" > tree.md
 ```
-tree.md的内容为：
+
+tree.md 的内容为：
+
 ```md
 .
 ├── README.md
@@ -724,20 +734,20 @@ tree.md的内容为：
 │   │   │   ├── fontawesome-webfont.woff
 │   │   │   └── fontawesome-webfont.woff2
 │   │   └── scss
-│   │       ├── _animated.scss
-│   │       ├── _bordered-pulled.scss
-│   │       ├── _core.scss
-│   │       ├── _fixed-width.scss
-│   │       ├── _icons.scss
-│   │       ├── _larger.scss
-│   │       ├── _list.scss
-│   │       ├── _mixins.scss
-│   │       ├── _path.scss
-│   │       ├── _rotated-flipped.scss
-│   │       ├── _screen-reader.scss
-│   │       ├── _stacked.scss
-│   │       ├── _variables.scss
-│   │       └── font-awesome.scss
+│   │   ├── \_animated.scss
+│   │   ├── \_bordered-pulled.scss
+│   │   ├── \_core.scss
+│   │   ├── \_fixed-width.scss
+│   │   ├── \_icons.scss
+│   │   ├── \_larger.scss
+│   │   ├── \_list.scss
+│   │   ├── \_mixins.scss
+│   │   ├── \_path.scss
+│   │   ├── \_rotated-flipped.scss
+│   │   ├── \_screen-reader.scss
+│   │   ├── \_stacked.scss
+│   │   ├── \_variables.scss
+│   │   └── font-awesome.scss
 │   ├── index.html
 │   ├── index.js
 │   ├── index.jsx
@@ -748,32 +758,38 @@ tree.md的内容为：
 └── yarn.lock
 
 5 directories, 32 files
-
 ```
 
 #### 项目启动
 
+> 项目里的每一次 `Commits`，基本上对应着相应的文件配置，可以对照着瞅瞅。
+
 克隆一份项目
+
 ```bash
 git clone https://github.com/yangtao2o/happymmall.git
 ```
 
 进入目录
+
 ```bash
 cd happymmall
 ```
 
 切换分支至 webpack@3-react
+
 ```bash
 ➜  happymmall git:(master) git checkout webpack@3-react
 ```
 
 下载依赖包
+
 ```bash
 ➜  happymmall git:(webpack@3-react) yarn install
 ```
 
 启动
+
 ```bash
 ➜  happymmall git:(webpack@3-react) npm start
 ```
