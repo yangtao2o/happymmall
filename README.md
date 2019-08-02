@@ -751,3 +751,29 @@ tree.md的内容为：
 
 ```
 
+#### 项目启动
+
+克隆一份项目
+```bash
+git clone https://github.com/yangtao2o/happymmall.git
+```
+
+进入目录
+```bash
+cd happymmall
+```
+
+切换分支至 webpack@3-react
+```bash
+➜  happymmall git:(master) git checkout webpack@3-react
+```
+
+下载依赖包
+```bash
+➜  happymmall git:(webpack@3-react) yarn install
+```
+
+启动
+```bash
+➜  happymmall git:(webpack@3-react) npm start
+```
