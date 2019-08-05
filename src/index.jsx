@@ -1,13 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './style.css';
-import './app.scss';
-import ImgSrc from './react.png';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./app.scss";
+import App from "./component/app.jsx";
 
 ReactDOM.render(
-  <div>
-    <h1>Hello, React.</h1>
-    <img src={ImgSrc} alt="react"/>
-  </div>,
-  document.getElementById('root')
+  <App />,
+  document.getElementById("root")
 );
