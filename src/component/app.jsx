@@ -1,10 +1,10 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import ImgSrc from '../react.png';
+import React from "react";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import ImgSrc from "../react.png";
 
 import Home from "./home.jsx";
 import About from "./about.jsx";
-import Inbox from "./Inbox.jsx";
+import Inbox from "./inbox.jsx";
 
 class App extends React.Component {
   render() {
@@ -12,19 +12,25 @@ class App extends React.Component {
       <Router>
         <div className="container">
           <div className="text-center">
-            <img src={ImgSrc} alt="react"/>
+            <img src={ImgSrc} alt="react" />
           </div>
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <Link className="btn btn-secondary btn-lg" to="/">Home</Link>
-            <Link className="btn btn-secondary btn-lg" to="/about">About</Link>
-            <Link className="btn btn-secondary btn-lg" to="/inbox">Inbox</Link>
+          <div className="btn-group" role="group" aria-label="Basic example">
+            <Link className="btn btn-secondary btn-lg" to="/">
+              Home
+            </Link>
+            <Link className="btn btn-secondary btn-lg" to="/about">
+              About
+            </Link>
+            <Link className="btn btn-secondary btn-lg" to="/inbox">
+              Inbox
+            </Link>
           </div>
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
           <Route path="/inbox" component={Inbox} />
         </div>
       </Router>
-    )
+    );
   }
 }
 
