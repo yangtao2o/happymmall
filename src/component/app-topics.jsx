@@ -1,15 +1,18 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
 
 function AppTopics() {
   return (
     <Router>
       <div style={{border: "1px solid #ccc"}}>
         <Header />
-
-        <Route path="/" exact component={Home} />
-        <Route path="/about" component={About} />
-        <Route path="/topics" component={Topics} />
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/topics" component={Topics} />
+          <Route render={() => <h3>Not Found.</h3>} />
+          <Redirect to="/" />
+        </Switch>
       </div>
     </Router>
   );
@@ -17,15 +20,15 @@ function AppTopics() {
 
 function Header() {
   return (
-    <ul>
-      <li>
-        <Link to="/">Home</Link>
+    <ul className="nav nav-pills">
+      <li className="nav-item">
+        <Link className="nav-link" to="/">Home</Link>
       </li>
-      <li>
-        <Link to="/about">About</Link>
+      <li className="nav-item">
+        <Link className="nav-link" to="/about">About</Link>
       </li>
-      <li>
-        <Link to="/topics">Topics</Link>
+      <li className="nav-item">
+        <Link className="nav-link" to="/topics">Topics</Link>
       </li>
     </ul>
   );

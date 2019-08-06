@@ -1,37 +1,52 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { Route, Link, Switch, BrowserRouter as Router } from "react-router-dom";
 import ImgSrc from "../react.png";
 
-import Home from "./home.jsx";
-import About from "./about.jsx";
-import Inbox from "./inbox.jsx";
+import AppLink from "./app-link.jsx";
+import AppTopics from "./app-topics.jsx";
+import AppNavLink from "./app-navlink.jsx";
+import NotFound from "./notfound.jsx";
 
-class App extends React.Component {
-  render() {
-    return (
-      <Router>
-        <div className="container">
-          <div className="text-center">
-            <img src={ImgSrc} alt="react" />
-          </div>
-          <div className="btn-group" role="group" aria-label="Basic example">
-            <Link className="btn btn-secondary btn-lg" to="/">
-              Home
-            </Link>
-            <Link className="btn btn-secondary btn-lg" to="/about">
-              About
-            </Link>
-            <Link className="btn btn-secondary btn-lg" to="/inbox">
-              Inbox
-            </Link>
-          </div>
-          <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/inbox" component={Inbox} />
+function App() {
+  return (
+    <Router>
+      <div className="container">
+        <div className="text-center mt-3 mb-3">
+          <img src={ImgSrc} alt="react" />
         </div>
-      </Router>
-    );
-  }
+        <div className="list-group">
+          <Link
+            to="/"
+            className="list-group-item list-group-item-action active"
+          >
+            Link-Basic
+          </Link>
+          <Link to="/topics" className="list-group-item list-group-item-action">
+            URL Parameters
+          </Link>
+          <Link
+            to="/nav-link"
+            className="list-group-item list-group-item-action"
+          >
+            Nav Link
+          </Link>
+          <Link
+            to="/nav"
+            className="list-group-item list-group-item-action"
+          >
+            Not Found
+          </Link>
+        </div>
+        <hr />
+        <Switch>
+          <Route exact path="/" component={AppLink} />
+          <Route path="/topics" component={AppTopics} />
+          <Route path="/nav-link" component={AppNavLink} />
+          <Route component={NotFound} />
+        </Switch>
+      </div>
+    </Router>
+  );
 }
 
 export default App;
