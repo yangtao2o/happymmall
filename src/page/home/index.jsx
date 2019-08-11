@@ -1,9 +1,12 @@
 import React from 'react';
+import './index.css';
 
 class Home extends React.Component {
   render() {
     return (
-      <div>Home</div>
+      <div id="page-wrapper">
+        <div id="page-inner">Home</div>
+      </div>
     )
   }
 }
