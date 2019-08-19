@@ -23,6 +23,9 @@ class App extends React.Component {
 
           <Switch>
             <Route path="/" exact component={Home} />
+            <Route path="/product" component={Home} />
+            <Route path="/category" component={Home} />
+            <Route path="/order" component={Home} />
             <Route path="/about/" component={About} />
             <Route path="/users/" component={User} />
             <Redirect from="*" to="/" />
