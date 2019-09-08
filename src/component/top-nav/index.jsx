@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 class TopNav extends React.Component {
   constructor(props) {
     super(props);
+    this.onLogout = this.onLogout.bind(this);
   }
+ 
   onLogout() {
     console.log("logout");
   }
@@ -20,6 +22,15 @@ class TopNav extends React.Component {
 
           <ul className="nav navbar-top-links navbar-right">
             <li className="dropdown">
+              <Link
+                to="/login"
+                aria-expanded="false"
+              >
+                <i className="fa fa-user fa-fw" />
+                <span>登录</span>
+              </Link>
+            </li>
+            <li className="dropdown">
               <a
                 className="dropdown-toggle"
                 data-toggle="dropdown"
@@ -32,7 +43,7 @@ class TopNav extends React.Component {
               </a>
               <ul className="dropdown-menu dropdown-user">
                 <li>
-                  <a href="#" onClick={() => this.onLogout()}>
+                  <a href="#" onClick={this.onLogout}>
                     <i className="fa fa-sign-out fa-fw" /> 退出登录
                   </a>
                 </li>
