@@ -1,17 +1,18 @@
 import React from "react";
 import MUtil from "util/mm.jsx";
+import User from "service/user-service.jsx";
 import "./index.scss";
 
 const _mm = new MUtil();
+const _user = new User();
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
-    this.data = {
+    this.state = {
       username: '',
       password: '',
     }
-
   }
 
   onInputChange(e) {
@@ -22,14 +23,17 @@ class Login extends React.Component {
     });
   }
 
-  onSubmit(e) {
-    _mm.request({
-      
+  onSubmitBtn(e) {
+    _user.login({
+      username: this.state.username,
+      password: this.state.password
+    }).then((res) => {
+      console.log({res})
+    }, (err) => {
+      console.log({err})
     })
   }
   render() {
-    console.log(this.data)
-
     return (
       <div className="container">
         <div className="col-md-6 col-md-offset-3">
@@ -56,7 +60,7 @@ class Login extends React.Component {
                   onChange={(e) => this.onInputChange(e)}
                 />
               </div>
-              <button type="button" className="btn btn-info btn-lg btn-block" onSubmit={(e) => this.onSubmit(e)}>
+              <button type="button" className="btn btn-info btn-lg btn-block" onClick={(e) => this.onSubmitBtn(e)}>
                 登录
               </button>
             </form>
