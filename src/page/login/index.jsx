@@ -10,9 +10,14 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
-      password: '',
-    }
+      username: "",
+      password: "",
+      redirect: _mm.getUrlParam("redirect") || "/"
+    };
+  }
+
+  componentWillMount() {
+    document.title = "登录 - MMALL ADMIN";
   }
 
   onInputChange(e) {
@@ -23,16 +28,32 @@ class Login extends React.Component {
     });
   }
 
+  onKeyUpHandle(e) {
+    if(e.keyCode === 13) {
+      this.onSubmitBtn(e);
+    }
+  }
+
   onSubmitBtn(e) {
-    _user.login({
+    const loginInfo = {
       username: this.state.username,
       password: this.state.password
-    }).then((res) => {
-      console.log({res})
-    }, (err) => {
-      console.log({err})
-    })
+    };
+    const checkLogin = _user.checkLoginInfo(loginInfo);
+    if (checkLogin.status) {
+      _user.login(loginInfo).then(
+        res => {
+          this.props.history.push(this.state.redirect);
+        },
+        err => {
+          _mm.errorTips(err);
+        }
+      );
+    } else {
+      _mm.errorTips(checkLogin.msg);
+    }
   }
+
   render() {
     return (
       <div className="container">
@@ -48,7 +69,8 @@ class Login extends React.Component {
                   name="username"
                   className="form-control input-lg"
                   placeholder="请输入用户名"
-                  onChange={(e) => this.onInputChange(e)}
+                  onChange={e => this.onInputChange(e)}
+                  onKeyUp={e => this.onKeyUpHandle(e)}
                 />
               </div>
               <div className="form-group">
@@ -57,10 +79,15 @@ class Login extends React.Component {
                   name="password"
                   className="form-control input-lg"
                   placeholder="请输入用户名密码"
-                  onChange={(e) => this.onInputChange(e)}
+                  onChange={e => this.onInputChange(e)}
+                  onKeyUp={e => this.onKeyUpHandle(e)}
                 />
               </div>
-              <button type="button" className="btn btn-info btn-lg btn-block" onClick={(e) => this.onSubmitBtn(e)}>
+              <button
+                type="button"
+                className="btn btn-info btn-lg btn-block"
+                onClick={e => this.onSubmitBtn(e)}
+              >
                 登录
               </button>
             </form>

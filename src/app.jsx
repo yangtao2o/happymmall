@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Route,
   Link,
   Redirect,
@@ -36,7 +36,6 @@ class App extends React.Component {
               </Layout>
             )} />
           </Switch>
-
         </div>
       </Router>
     );

@@ -23,7 +23,9 @@ module.exports = {
   devServer: {
     contentBase: './dist',
     historyApiFallback: {
-      index: '/dist/index.html'
+      rewrites: [
+        { from: /^\/$/, to: '/dist/index.html' }
+      ]
     },
     hot: true,
     port: 8082,
