@@ -14,6 +14,7 @@ import Home from "page/home/index.jsx";
 import About from "page/about/index.jsx";
 import User from "page/user/index.jsx";
 import Login from "page/login/index.jsx";
+import Error from "page/error/index.jsx";
 
 class App extends React.Component {
   render() {
@@ -31,7 +32,7 @@ class App extends React.Component {
                   <Route path="/order" component={Home} />
                   <Route path="/about/" component={About} />
                   <Route path="/user/" component={User} />
-                  <Redirect from="*" to="/" />
+                  <Route component={Error} />
                 </Switch>
               </Layout>
             )} />
