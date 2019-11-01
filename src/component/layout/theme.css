@@ -1,13 +1,3 @@
-/*----------------------------------------------
-Author : www.webthemez.com
-License: Commons Attribution 3.0
-http://creativecommons.org/licenses/by/3.0/
-------------------------------------------------*/
-
-/*----------------------------------------------
-    COMMON  STYLES    
-------------------------------------------------*/
-
 body {
   font-family: 'Open Sans', sans-serif;
   background: #f3f3f3;
@@ -219,12 +209,12 @@ p {
 }
 
 .green {
-  background-color: #5cb85c;
+  background-color: #2eaf2e;
   color: #fff;
 }
 
 .blue {
-  background-color: #4CB1CF;
+  background-color: #0f9dc8;
   color: #fff
 }
 
@@ -234,7 +224,7 @@ p {
 }
 
 .brown {
-  background-color: #f0ad4e;
+  background-color: #e78a07;
   color: #fff;
 }
 

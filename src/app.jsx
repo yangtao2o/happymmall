@@ -30,7 +30,7 @@ class App extends React.Component {
                   <Route path="/category" component={Home} />
                   <Route path="/order" component={Home} />
                   <Route path="/about/" component={About} />
-                  <Route path="/users/" component={User} />
+                  <Route path="/user/" component={User} />
                   <Redirect from="*" to="/" />
                 </Switch>
               </Layout>

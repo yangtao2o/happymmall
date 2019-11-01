@@ -38,6 +38,8 @@ cd happymmall
 
 ## Step
 
+Wiki：**[happymmallwiki](https://gitee.com/imooccode/happymmallwiki/wikis/Home)**
+
 ### 登录
 
 - [Window.localStorage](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/localStorage)
