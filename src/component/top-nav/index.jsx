@@ -6,6 +6,57 @@ import User from "service/user-service.jsx";
 const _mm = new MUtil();
 const _user = new User();
 
+function MobileMenu() {
+  return (
+    <button
+      type="button"
+      className="navbar-toggle"
+      data-toggle="collapse"
+      data-target=".sidebar-collapse"
+    >
+      <span className="sr-only">Toggle navigation</span>
+      <span className="icon-bar" />
+      <span className="icon-bar" />
+      <span className="icon-bar" />
+    </button>
+  );
+}
+
+function LoginContent() {
+  return (
+    <li className="dropdown">
+      <Link to="/login" aria-expanded="false">
+        <i className="fa fa-user fa-fw" />
+        <span>登录</span>
+      </Link>
+    </li>
+  );
+}
+
+function LogoutContent(props) {
+  return (
+    <li className="dropdown">
+      <a
+        className="dropdown-toggle"
+        data-toggle="dropdown"
+        href="javascript:;"
+        aria-expanded="false"
+      >
+        <i className="fa fa-user fa-fw" />
+        <span>欢迎，{props.username}</span>
+        <i className="fa fa-caret-down" />
+      </a>
+      <ul className="dropdown-menu dropdown-user">
+        <li>
+          <a href="#" onClick={props.onClick}>
+            <i className="fa fa-sign-out fa-fw" /> 退出登录
+          </a>
+        </li>
+      </ul>
+    </li>
+  );
+}
+
 class TopNav extends React.Component {
   constructor(props) {
     super(props);
@@ -30,58 +81,20 @@ class TopNav extends React.Component {
               <b>HAPPY</b> MMALL
             </Link>
           </div>
-
           <ul className="nav navbar-top-links navbar-right">
-           
-            <li className="dropdown">
-              <Link to="/login" aria-expanded="false">
-                <i className="fa fa-user fa-fw" />
-                <span>登录</span>
-              </Link>
-            </li>
-            <li className="dropdown">
-              <a
-                className="dropdown-toggle"
-                data-toggle={this.state.username ? 'dropdown' : ''}
-                href="javascript:;"
-                aria-expanded="false"
-              >
-                <i className="fa fa-user fa-fw" />
-                {this.state.username ? (
-                  <span>欢迎，{this.state.username}</span>
-                ) : (
-                  <span>欢迎您</span>
-                )}
-                <i className={this.state.username ? 'fa fa-caret-down' : ''} />
-              </a>
-              <ul className="dropdown-menu dropdown-user">
-                <li>
-                  <a href="#" onClick={this.onLogout}>
-                    <i className="fa fa-sign-out fa-fw" /> 退出登录
-                  </a>
-                </li>
-              </ul>
-            </li>
+            {this.state.username ? (
+              <LogoutContent
+                username={this.state.username}
+                onClick={this.onLogout}
+              />
+            ) : (
+              <LoginContent />
+            )}
           </ul>
         </nav>
       </div>
     );
   }
-}
-function MobileMenu() {
-  return (
-    <button
-      type="button"
-      className="navbar-toggle"
-      data-toggle="collapse"
-      data-target=".sidebar-collapse"
-    >
-      <span className="sr-only">Toggle navigation</span>
-      <span className="icon-bar" />
-      <span className="icon-bar" />
-      <span className="icon-bar" />
-    </button>
-  );
 }
 
 export default TopNav;
