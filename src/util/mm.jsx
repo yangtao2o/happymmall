@@ -32,7 +32,7 @@ class MUtil {
 
   doLogout(name) {
     this.removeLocalStorage(name);
-    window.location.href = '/';
+    window.location.href = '/login';
   }
 
   getUrlParam(name) {

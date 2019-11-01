@@ -11,6 +11,13 @@ class User {
     })
   }
 
+  logout() {
+    return _mm.request({
+      url: '/user/logout.do',
+      type: 'post'
+    })
+  }
+
   checkLoginInfo(loginInfo) {
     const username = $.trim(loginInfo.username);
     const password = $.trim(loginInfo.password);

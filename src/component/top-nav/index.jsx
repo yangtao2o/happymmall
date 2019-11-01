@@ -68,7 +68,11 @@ class TopNav extends React.Component {
   }
 
   onLogout() {
-    _mm.doLogout("login-info");
+    _user.logout().then(res => {
+      _mm.doLogout("login-info");
+    }, err => {
+      _mm.errorTips(err);
+    });
   }
 
   render() {
