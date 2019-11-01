@@ -30,6 +30,11 @@ class MUtil {
     window.location.href = `/login?redirect=${encodeURIComponent(window.location.name)}`;
   }
 
+  doLogout(name) {
+    this.removeLocalStorage(name);
+    window.location.href = '/';
+  }
+
   getUrlParam(name) {
     // param=123&param1=456
     let queryString = window.location.search.split('?')[1] || '';
@@ -37,7 +42,26 @@ class MUtil {
     let result = queryString.match(reg);
     // ["redirect=/post/user", "", "/post/user", "", index: 0, input: "redirect=/post/user", groups: undefined] 
     return result ? decodeURIComponent(result[2]) : null;
-  
+  }
+
+  setLocalStorage(name, data) {
+    const dataType = typeof data;
+    if(dataType === 'object') {
+      window.localStorage.setItem(name, JSON.stringify(data));
+    } else if(['string', 'number', 'boolean'].indexOf(dataType) != -1) {
+      window.localStorage.setItem(name, data);
+    } else {
+      this.errorTips('暂不支持此类型的本地存储');
+    }
+  }
+
+  getLocalStorage(name) {
+    const data = window.localStorage.getItem(name);
+    return data ? JSON.parse(data) : '';
+  }
+
+  removeLocalStorage(name) {
+    window.localStorage.removeItem(name);
   }
 
   errorTips(err) {

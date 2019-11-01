@@ -43,6 +43,7 @@ class Login extends React.Component {
     if (checkLogin.status) {
       _user.login(loginInfo).then(
         res => {
+          _mm.setLocalStorage('login-info', res);
           this.props.history.push(this.state.redirect);
         },
         err => {
