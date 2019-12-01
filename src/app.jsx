@@ -12,30 +12,32 @@ import "./app.scss";
 import Layout from "component/layout/index.jsx";
 import Home from "page/home/index.jsx";
 import About from "page/about/index.jsx";
-import User from "page/user/index.jsx";
+import UserList from "page/user/index.jsx";
 import Login from "page/login/index.jsx";
 import Error from "page/error/index.jsx";
 
 class App extends React.Component {
   render() {
+    const LayoutRouter = (
+      <Layout>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/product" component={Home} />
+          <Route path="/category" component={Home} />
+          <Route path="/order" component={Home} />
+          <Route path="/about/" component={About} />
+          <Route path="/user/index" component={UserList} />
+          <Redirect exact from="/user" to="/user/index" />
+          <Route component={Error} />
+        </Switch>
+      </Layout>
+    );
     return (
       <Router>
         <div>
           <Switch>
             <Route path="/login" component={Login} />
-            <Route path="/" render={props => (
-              <Layout>
-                <Switch>
-                  <Route path="/" exact component={Home} />
-                  <Route path="/product" component={Home} />
-                  <Route path="/category" component={Home} />
-                  <Route path="/order" component={Home} />
-                  <Route path="/about/" component={About} />
-                  <Route path="/user/" component={User} />
-                  <Route component={Error} />
-                </Switch>
-              </Layout>
-            )} />
+            <Route path="/" render={props => LayoutRouter} />
           </Switch>
         </div>
       </Router>

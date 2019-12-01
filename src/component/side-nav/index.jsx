@@ -61,7 +61,7 @@ class SideNav extends React.Component {
                   aria-expanded="true"
                 >
                   <li>
-                    <NavLink activeClassName="active-menu" to="/users">用户管理</NavLink>
+                    <NavLink activeClassName="active-menu" to="/user">用户管理</NavLink>
                   </li>
                 </ul>
               </li>

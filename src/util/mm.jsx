@@ -6,7 +6,7 @@ class MUtil {
         type: param.type || 'get',
         dataType: param.dataType || "json",
         data: param.data || null,
-        success: function(res) {
+        success: res => {
           // success
           if(res.status === 0) {
             typeof resolve === 'function' && resolve(res.data, res.msg);
@@ -18,7 +18,7 @@ class MUtil {
             typeof reject === 'function' && reject(res.msg || res.data);
           }
         },
-        error: function(err) {
+        error: err => {
           typeof reject === 'function' && reject(err.responseText);
         }
       })

@@ -7,7 +7,7 @@ const {
 } = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: "./src/app.jsx",
+  entry: path.resolve(__dirname, "./src/app.jsx"),
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "app.js"
