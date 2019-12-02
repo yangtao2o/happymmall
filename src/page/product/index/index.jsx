@@ -31,11 +31,13 @@ class ProductList extends React.Component {
     const listParam = {};
     listParam.listType = this.state.listType;
     listParam.pageNum = this.state.pageNum;
+
     // 如果是搜索的话，需要传入搜索类型和搜索关键字
     if (this.state.listType === "search") {
       listParam.searchType = this.state.searchType;
       listParam.keyword = this.state.searchKeyword;
     }
+
     // 请求接口
     _product.getProductList(listParam).then(
       res => {
@@ -93,6 +95,12 @@ class ProductList extends React.Component {
     this.setState({ pageNum }, () => {
       this.loadProductList();
     });
+  }
+
+  componentWillUnmount() {
+    this.setState = (state) => {
+      return;
+    }
   }
 
   render() {

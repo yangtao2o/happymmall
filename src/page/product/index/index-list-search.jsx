@@ -1,4 +1,7 @@
 import React from "react";
+import MUtil from "util/mm.jsx";
+
+const _mm = new MUtil();
 
 class ListSearch extends React.Component {
   constructor(props) {
@@ -12,13 +15,20 @@ class ListSearch extends React.Component {
   onValueChange(e) {
     let name = e.target.name,
       value = e.target.value.trim();
+
     this.setState({
       [name]: value
     });
   }
 
   onSearch() {
-    this.props.onSearch(this.state.searchType, this.state.searchKeyword);
+    const searchType = this.state.searchType;
+    const searchKeyword = +this.state.searchKeyword;
+    if(searchType === 'productId' && searchKeyword != ''  && Number.isNaN(searchKeyword)) {
+      _mm.errorTips('请输入商品ID');
+      return;
+    }
+    this.props.onSearch(searchType, searchKeyword);
   }
 
   onSearchKeywordKeyUp(e) {

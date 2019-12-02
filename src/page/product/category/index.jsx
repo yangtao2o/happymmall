@@ -76,6 +76,13 @@ class CategoryList extends React.Component {
     }
   }
 
+  // Fix: 'Warning: Can only update a mounted or mounting component. This usually means you called setState, replaceState, or forceUpdate on an unmounted coponent. This is a no-op.'
+  componentWillUnmount() {
+    this.setState = (state) => {
+      return;
+    }
+  }
+
   render() {
     let listBody = this.state.list.map((category, index) => {
       return (

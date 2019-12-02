@@ -20,15 +20,17 @@ class CategorySelector extends React.Component {
   componentDidMount() {
     this.loadFirstCategory();
   }
-  
+
   componentWillReceiveProps(nextProps) {
     let categoryIdChange = this.props.categoryId !== nextProps.categoryId,
       parentCategoryIdChange =
         this.props.parentCategoryId !== nextProps.parentCategoryId;
+        
     // 数据没有发生变化的时候，直接不做处理
     if (!categoryIdChange && !parentCategoryIdChange) {
       return;
     }
+
     // 假如只有一级品类
     if (nextProps.parentCategoryId === 0) {
       this.setState({
@@ -36,6 +38,7 @@ class CategorySelector extends React.Component {
         secondCategoryId: 0
       });
     }
+
     // 有两级品类
     else {
       this.setState(
@@ -49,6 +52,7 @@ class CategorySelector extends React.Component {
       );
     }
   }
+
   // 加载一级分类
   loadFirstCategory() {
     _product.getCategoryList().then(
@@ -62,6 +66,7 @@ class CategorySelector extends React.Component {
       }
     );
   }
+
   // 加载二级分类
   loadSecondCategory() {
     _product.getCategoryList(this.state.firstCategoryId).then(
@@ -75,6 +80,7 @@ class CategorySelector extends React.Component {
       }
     );
   }
+
   // 选择一级品类
   onFirstCategoryChange(e) {
     if (this.props.readOnly) {
@@ -94,6 +100,7 @@ class CategorySelector extends React.Component {
       }
     );
   }
+
   // 选择二级品类
   onSecondCategoryChange(e) {
     if (this.props.readOnly) {
@@ -109,6 +116,7 @@ class CategorySelector extends React.Component {
       }
     );
   }
+
   // 传给父组件选中的结果
   onPropsCategoryChange() {
     // 判断props里的回调函数存在
@@ -127,6 +135,13 @@ class CategorySelector extends React.Component {
         this.props.onCategoryChange(this.state.firstCategoryId, 0);
     }
   }
+
+  componentWillUnmount() {
+    this.setState = (state) => {
+      return;
+    }
+  }
+
   render() {
     return (
       <div className="col-md-10">

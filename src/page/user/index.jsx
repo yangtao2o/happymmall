@@ -43,6 +43,12 @@ class UserList extends React.Component {
     });
   }
 
+  componentWillUnmount() {
+    this.setState = (state) => {
+      return;
+    }
+  }
+
   render() {
     let listBody = this.state.list.map((user, index) => {
       return (

@@ -9,12 +9,11 @@ class Product {
       data = {};
     if (listParam.listType === "list") {
       url = "/manage/product/list.do";
-      data.pageNum = listParam.pageNum;
     } else if (listParam.listType === "search") {
       url = "/manage/product/search.do";
-      data.pageNum = listParam.pageNum;
       data[listParam.searchType] = listParam.keyword;
     }
+    data.pageNum = listParam.pageNum;
     return _mm.request({
       type: "post",
       url: url,
@@ -119,7 +118,7 @@ class Product {
       data: category
     });
   }
-  
+
   // 修改品类名称
   updateCategoryName(category) {
     return _mm.request({

@@ -27,9 +27,11 @@ class ProductSave extends React.Component {
       status: 1 //商品状态1为在售
     };
   }
+
   componentDidMount() {
     this.loadProduct();
   }
+
   // 加载商品详情
   loadProduct() {
     // 有id的时候，表示是编辑功能，需要表单回填
@@ -53,6 +55,7 @@ class ProductSave extends React.Component {
       );
     }
   }
+
   // 简单字段的改变，比如商品名称，描述，价格，库存
   onValueChange(e) {
     let name = e.target.name,
@@ -61,6 +64,7 @@ class ProductSave extends React.Component {
       [name]: value
     });
   }
+
   // 品类选择器变化
   onCategoryChange(categoryId, parentCategoryId) {
     this.setState({
@@ -68,6 +72,7 @@ class ProductSave extends React.Component {
       parentCategoryId: parentCategoryId
     });
   }
+
   // 上传图片成功
   onUploadSuccess(res) {
     let subImages = this.state.subImages;
@@ -76,10 +81,12 @@ class ProductSave extends React.Component {
       subImages: subImages
     });
   }
+
   // 上传图片失败
   onUploadError(errMsg) {
     _mm.errorTips(errMsg);
   }
+
   // 删除图片
   onImageDelete(e) {
     let index = parseInt(e.target.getAttribute("index")),
@@ -89,15 +96,18 @@ class ProductSave extends React.Component {
       subImages: subImages
     });
   }
+
   // 富文本编辑器的变化
   onDetailValueChange(value) {
     this.setState({
       detail: value
     });
   }
+
   getSubImagesString() {
     return this.state.subImages.map(image => image.uri).join(",");
   }
+
   // 提交表单
   onSubmit() {
     let product = {
@@ -131,6 +141,13 @@ class ProductSave extends React.Component {
       _mm.errorTips(productCheckResult.msg);
     }
   }
+
+  componentWillUnmount() {
+    this.setState = (state) => {
+      return;
+    }
+  }
+
   render() {
     return (
       <div id="page-wrapper">
@@ -257,4 +274,5 @@ class ProductSave extends React.Component {
     );
   }
 }
+
 export default ProductSave;
