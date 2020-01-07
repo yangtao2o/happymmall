@@ -5801,10 +5801,10 @@ signal-exit@^3.0.0:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
   integrity sha1-tf3AjxKH6hF4Yo5BXiUTK3NkbG0=
 
-simditor@2.3.6:
-  version "2.3.6"
-  resolved "http://r.cnpmjs.org/simditor/download/simditor-2.3.6.tgz#ba71edc3161fc438466c336c9c10052743403947"
-  integrity sha1-unHtwxYfxDhGbDNsnBAFJ0NAOUc=
+simditor@2.3.21:
+  version "2.3.21"
+  resolved "http://r.cnpmjs.org/simditor/download/simditor-2.3.21.tgz#517d3c8204b16a2d0906fa428162ae288747a294"
+  integrity sha1-UX08ggSxai0JBvpCgWKuKIdHopQ=
   dependencies:
     jquery "~2.1.4"
     simple-hotkeys "~1.0.3"

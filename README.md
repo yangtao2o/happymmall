@@ -1,4 +1,79 @@
-# 基于 React + React-Router 的企业级后台管理系统学习记录
+# 基于 React + React-Router 后台管理系统 Demo
+
+## Start
+
+```shell
+# 初始化
+yarn install
+
+# 启动
+yarn start
+
+# 打包
+yarn build
+```
+
+## Content
+
+`React16 + React-Router4 + Bootstrap + Sass + jQuery + Webpack + Babel + Yarn`
+
+主要模块：
+
+- 通用模块-通用组织结构、通用菜单、通用导航
+- 用户模块-登录、退出、用户列表
+- 商品模块-带筛选的商品列表，商品详情，添加/修改商品
+- 品类模块-品类列表，添加品类，修改品类名称
+- 订单模块-带筛选的订单列表，订单详情
+
+项目主体结构：
+
+```tree
+├── app.jsx
+├── app.scss
+├── component
+│   ├── layout
+│   │   ├── index.jsx
+│   │   └── theme.css
+│   ├── page-title
+│   │   └── index.jsx
+│   ├── side-nav
+│   │   └── index.jsx
+│   └── top-nav
+│       └── index.jsx
+├── font-awesome
+│   ├── fonts
+│   └── scss
+├── index.html
+├── page
+│   ├── about
+│   ├── error
+│   ├── home
+│   ├── login
+│   ├── order
+│   ├── product
+│   │   ├── category
+│   │   ├── index
+│   │   └── router.jsx
+│   └── user
+│       └── index.jsx
+├── service
+│   ├── order-service.jsx
+│   ├── product-service.jsx
+│   ├── statistic-service.jsx
+│   └── user-service.jsx
+└── util
+    ├── file-uploader
+    │   ├── index.jsx
+    │   └── react-fileupload.jsx
+    ├── mm.jsx
+    ├── pagination
+    │   └── index.jsx
+    ├── rich-editor
+    │   ├── index.jsx
+    │   └── index.scss
+    └── table-list
+        └── index.jsx
+```
 
 ## 配置 Webpack@3
 
@@ -36,9 +111,9 @@ cd happymmall
 
 详细练习过程见此处 [DOC](https://github.com/yangtao2o/happymmall/tree/webpack%403-react)。
 
-## Step
+## 其他
 
-Wiki：**[happymmallwiki](https://gitee.com/imooccode/happymmallwiki/wikis/Home)**
+API：**[happymmallwiki](https://gitee.com/imooccode/happymmallwiki/wikis/Home)**
 
 ### 登录
 
@@ -68,3 +143,9 @@ localStorage.removeItem("myCat");
 // 移除所有
 localStorage.clear();
 ```
+
+## Simditor 富文本编辑器
+
+DOC：[Simditor](https://simditor.tower.im/docs/doc-usage.html)
+
+注意：最新版本的 2.3.28，会报错`Simditor.connect() is not a function`，重新下载版本 2.3.21。
