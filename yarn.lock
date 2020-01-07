@@ -1426,7 +1426,7 @@ class-utils@^0.3.5:
 
 classnames@^2.2.6:
   version "2.2.6"
-  resolved "http://r.cnpmjs.org/classnames/download/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
+  resolved "https://r.cnpmjs.org/classnames/download/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
   integrity sha1-Q5Nb/90pHzJtrQogUwmzjQD2UM4=
 
 clean-css@4.2.x:
@@ -2074,6 +2074,11 @@ domhandler@^2.3.0:
   integrity sha512-JiK04h0Ht5u/80fdLMCEmV4zkNh2BcoMFBmZ/91WtYZ8qVXSKjiw7fXMgFPnHcSZgOo3XdinHvmnDUeMf5R4wA==
   dependencies:
     domelementtype "1"
+
+dompurify@^1.0.8:
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/dompurify/-/dompurify-1.0.11.tgz#fe0f4a40d147f7cebbe31a50a1357539cfc1eb4d"
+  integrity sha512-XywCTXZtc/qCX3iprD1pIklRVk/uhl8BKpkTxr+ZyMVUzSUg7wkQXRBp/euJ5J5moa1QvfpvaPQVP71z1O59dQ==
 
 domutils@1.5.1:
   version "1.5.1"
@@ -3605,12 +3610,12 @@ isstream@~0.1.2:
 
 jquery@2.x:
   version "2.2.4"
-  resolved "http://r.cnpmjs.org/jquery/download/jquery-2.2.4.tgz#2c89d6889b5eac522a7eea32c14521559c6cbf02"
+  resolved "https://r.cnpmjs.org/jquery/download/jquery-2.2.4.tgz#2c89d6889b5eac522a7eea32c14521559c6cbf02"
   integrity sha1-LInWiJterFIqfuoywUUhVZxsvwI=
 
 jquery@~2.1.4:
   version "2.1.4"
-  resolved "http://r.cnpmjs.org/jquery/download/jquery-2.1.4.tgz#228bde698a0c61431dc2630a6a154f15890d2317"
+  resolved "https://r.cnpmjs.org/jquery/download/jquery-2.1.4.tgz#228bde698a0c61431dc2630a6a154f15890d2317"
   integrity sha1-IoveaYoMYUMdwmMKahVPFYkNIxc=
 
 js-base64@^2.1.8, js-base64@^2.1.9:
@@ -5213,7 +5218,7 @@ raw-body@2.4.0:
 
 rc-pagination@^1.20.11:
   version "1.20.11"
-  resolved "http://r.cnpmjs.org/rc-pagination/download/rc-pagination-1.20.11.tgz#ff8ccbf422e229b0e36039bd33b5c9b619d74ad2"
+  resolved "https://r.cnpmjs.org/rc-pagination/download/rc-pagination-1.20.11.tgz#ff8ccbf422e229b0e36039bd33b5c9b619d74ad2"
   integrity sha1-/4zL9CLiKbDjYDm9M7XJthnXStI=
   dependencies:
     babel-runtime "6.x"
@@ -5248,7 +5253,7 @@ react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1:
 
 react-lifecycles-compat@^3.0.4:
   version "3.0.4"
-  resolved "http://r.cnpmjs.org/react-lifecycles-compat/download/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
+  resolved "https://r.cnpmjs.org/react-lifecycles-compat/download/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha1-TxonOv38jzSIqMUWv9p4+HI1I2I=
 
 react-router-dom@^5.0.1:
@@ -5801,11 +5806,12 @@ signal-exit@^3.0.0:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
   integrity sha1-tf3AjxKH6hF4Yo5BXiUTK3NkbG0=
 
-simditor@2.3.21:
-  version "2.3.21"
-  resolved "http://r.cnpmjs.org/simditor/download/simditor-2.3.21.tgz#517d3c8204b16a2d0906fa428162ae288747a294"
-  integrity sha1-UX08ggSxai0JBvpCgWKuKIdHopQ=
+simditor@2.3.22:
+  version "2.3.22"
+  resolved "https://registry.yarnpkg.com/simditor/-/simditor-2.3.22.tgz#952b3d697fb334a363c02613e78774e9d1257189"
+  integrity sha512-qFbbo6jREbIICxncsJTaAFNOwvMDwDCSqobZnQPDNy2QyRXaHLIZyoDmcBMJQJWoN17WksQjBr774TQXFeFgBA==
   dependencies:
+    dompurify "^1.0.8"
     jquery "~2.1.4"
     simple-hotkeys "~1.0.3"
     simple-module "~2.0.6"
@@ -5813,7 +5819,7 @@ simditor@2.3.21:
 
 simple-hotkeys@~1.0.3:
   version "1.0.3"
-  resolved "http://r.cnpmjs.org/simple-hotkeys/download/simple-hotkeys-1.0.3.tgz#47a5bc35362ca7339611bd09a84fa37818b0bbc6"
+  resolved "https://r.cnpmjs.org/simple-hotkeys/download/simple-hotkeys-1.0.3.tgz#47a5bc35362ca7339611bd09a84fa37818b0bbc6"
   integrity sha1-R6W8NTYspzOWEb0JqE+jeBiwu8Y=
   dependencies:
     jquery "2.x"
@@ -5821,14 +5827,14 @@ simple-hotkeys@~1.0.3:
 
 simple-module@~2.0.5, simple-module@~2.0.6:
   version "2.0.6"
-  resolved "http://r.cnpmjs.org/simple-module/download/simple-module-2.0.6.tgz#cec8250325f8c7f575f4aa75c919b38396a6037b"
+  resolved "https://r.cnpmjs.org/simple-module/download/simple-module-2.0.6.tgz#cec8250325f8c7f575f4aa75c919b38396a6037b"
   integrity sha1-zsglAyX4x/V19Kp1yRmzg5amA3s=
   dependencies:
     jquery "2.x"
 
 simple-uploader@~2.0.7:
   version "2.0.8"
-  resolved "http://r.cnpmjs.org/simple-uploader/download/simple-uploader-2.0.8.tgz#5fc4106c6d968b0b353293e3b16094aafde957ba"
+  resolved "https://r.cnpmjs.org/simple-uploader/download/simple-uploader-2.0.8.tgz#5fc4106c6d968b0b353293e3b16094aafde957ba"
   integrity sha1-X8QQbG2Wiws1MpPjsWCUqv3pV7o=
   dependencies:
     jquery "2.x"
