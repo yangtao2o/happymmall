@@ -1426,7 +1426,7 @@ class-utils@^0.3.5:
 
 classnames@^2.2.6:
   version "2.2.6"
-  resolved "http://r.cnpmjs.org/classnames/download/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
+  resolved "https://r.cnpmjs.org/classnames/download/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
   integrity sha1-Q5Nb/90pHzJtrQogUwmzjQD2UM4=
 
 clean-css@4.2.x:
@@ -3605,12 +3605,12 @@ isstream@~0.1.2:
 
 jquery@2.x:
   version "2.2.4"
-  resolved "http://r.cnpmjs.org/jquery/download/jquery-2.2.4.tgz#2c89d6889b5eac522a7eea32c14521559c6cbf02"
+  resolved "https://r.cnpmjs.org/jquery/download/jquery-2.2.4.tgz#2c89d6889b5eac522a7eea32c14521559c6cbf02"
   integrity sha1-LInWiJterFIqfuoywUUhVZxsvwI=
 
 jquery@~2.1.4:
   version "2.1.4"
-  resolved "http://r.cnpmjs.org/jquery/download/jquery-2.1.4.tgz#228bde698a0c61431dc2630a6a154f15890d2317"
+  resolved "https://r.cnpmjs.org/jquery/download/jquery-2.1.4.tgz#228bde698a0c61431dc2630a6a154f15890d2317"
   integrity sha1-IoveaYoMYUMdwmMKahVPFYkNIxc=
 
 js-base64@^2.1.8, js-base64@^2.1.9:
@@ -5168,9 +5168,9 @@ querystring@0.2.0:
   integrity sha1-sgmEkgO7Jd+CDadW50cAWHhSFiA=
 
 querystringify@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.1.1.tgz#60e5a5fd64a7f8bfa4d2ab2ed6fdf4c85bad154e"
-  integrity sha512-w7fLxIRCRT7U8Qu53jQnJyPkYZIaR4n5151KMfcJlO/A9397Wxb1amJvROTK6TOnp7PfoAmg/qXiNHI+08jRfA==
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.2.0.tgz#3345941b4153cb9d082d8eee4cda2016a9aef7f6"
+  integrity sha512-FIqgj2EUvTa7R50u0rGsyTftzjYmv/a3hO345bZNrqabNqjtgiDMgmo4mkUjd+nzU5oF3dClKqFIPUKybUyqoQ==
 
 randomatic@^3.0.0:
   version "3.1.1"
@@ -5213,7 +5213,7 @@ raw-body@2.4.0:
 
 rc-pagination@^1.20.11:
   version "1.20.11"
-  resolved "http://r.cnpmjs.org/rc-pagination/download/rc-pagination-1.20.11.tgz#ff8ccbf422e229b0e36039bd33b5c9b619d74ad2"
+  resolved "https://r.cnpmjs.org/rc-pagination/download/rc-pagination-1.20.11.tgz#ff8ccbf422e229b0e36039bd33b5c9b619d74ad2"
   integrity sha1-/4zL9CLiKbDjYDm9M7XJthnXStI=
   dependencies:
     babel-runtime "6.x"
@@ -5248,7 +5248,7 @@ react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1:
 
 react-lifecycles-compat@^3.0.4:
   version "3.0.4"
-  resolved "http://r.cnpmjs.org/react-lifecycles-compat/download/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
+  resolved "https://r.cnpmjs.org/react-lifecycles-compat/download/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha1-TxonOv38jzSIqMUWv9p4+HI1I2I=
 
 react-router-dom@^5.0.1:
@@ -5803,7 +5803,7 @@ signal-exit@^3.0.0:
 
 simditor@2.3.21:
   version "2.3.21"
-  resolved "http://r.cnpmjs.org/simditor/download/simditor-2.3.21.tgz#517d3c8204b16a2d0906fa428162ae288747a294"
+  resolved "https://r.cnpmjs.org/simditor/download/simditor-2.3.21.tgz#517d3c8204b16a2d0906fa428162ae288747a294"
   integrity sha1-UX08ggSxai0JBvpCgWKuKIdHopQ=
   dependencies:
     jquery "~2.1.4"
@@ -5813,7 +5813,7 @@ simditor@2.3.21:
 
 simple-hotkeys@~1.0.3:
   version "1.0.3"
-  resolved "http://r.cnpmjs.org/simple-hotkeys/download/simple-hotkeys-1.0.3.tgz#47a5bc35362ca7339611bd09a84fa37818b0bbc6"
+  resolved "https://r.cnpmjs.org/simple-hotkeys/download/simple-hotkeys-1.0.3.tgz#47a5bc35362ca7339611bd09a84fa37818b0bbc6"
   integrity sha1-R6W8NTYspzOWEb0JqE+jeBiwu8Y=
   dependencies:
     jquery "2.x"
@@ -5821,14 +5821,14 @@ simple-hotkeys@~1.0.3:
 
 simple-module@~2.0.5, simple-module@~2.0.6:
   version "2.0.6"
-  resolved "http://r.cnpmjs.org/simple-module/download/simple-module-2.0.6.tgz#cec8250325f8c7f575f4aa75c919b38396a6037b"
+  resolved "https://r.cnpmjs.org/simple-module/download/simple-module-2.0.6.tgz#cec8250325f8c7f575f4aa75c919b38396a6037b"
   integrity sha1-zsglAyX4x/V19Kp1yRmzg5amA3s=
   dependencies:
     jquery "2.x"
 
 simple-uploader@~2.0.7:
   version "2.0.8"
-  resolved "http://r.cnpmjs.org/simple-uploader/download/simple-uploader-2.0.8.tgz#5fc4106c6d968b0b353293e3b16094aafde957ba"
+  resolved "https://r.cnpmjs.org/simple-uploader/download/simple-uploader-2.0.8.tgz#5fc4106c6d968b0b353293e3b16094aafde957ba"
   integrity sha1-X8QQbG2Wiws1MpPjsWCUqv3pV7o=
   dependencies:
     jquery "2.x"
@@ -6464,9 +6464,9 @@ url-loader@0.6.2:
     schema-utils "^0.3.0"
 
 url-parse@^1.1.8, url-parse@^1.4.3:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.4.7.tgz#a8a83535e8c00a316e403a5db4ac1b9b853ae278"
-  integrity sha512-d3uaVyzDB9tQoSXFvuSUNFibTd9zxd2bkVrDRvF5TmvWWQwqE4lgYJ5m+x1DbecWkw+LK4RNl2CU1hHuOKPVlg==
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.5.3.tgz#71c1303d38fb6639ade183c2992c8cc0686df862"
+  integrity sha512-IIORyIQD9rvj0A4CLWsHkBBJuNqWpFQe224b6j9t/ABmquIS0qDU2pY6kl6AuOrL5OkCXHMCFNe1jBcuAggjvQ==
   dependencies:
     querystringify "^2.1.1"
     requires-port "^1.0.0"
